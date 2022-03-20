@@ -38,10 +38,11 @@ const bookSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    author: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: Author
-    }
+    author: [authSchema]
+    // author: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: Author
+    // }
 
 })
 
@@ -72,10 +73,14 @@ async function getBooks(){
 // createAuthor('Ayman Hassan', 'JS Developer', 42);
 
 //createBook
-// createBook("Java", "Java ES6","623687a4616a6f8e0e7bd634");
+createBook("Java", "Java ES6"
+    ,[new Author({name: 'Hany Rashad', description: 'IT Manager', age: 40})
+    ,new Author({name: 'Ramy RasKamalhad', description: 'Software Developer', age: 45})
+    ,new Author({name: 'Mohamed Ali', description: 'Network Manager', age: 52})],
+);
 
 //getBooks
-getBooks();
+// getBooks();
 
 
 
