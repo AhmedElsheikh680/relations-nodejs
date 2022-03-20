@@ -64,7 +64,7 @@ async function createBook(name, description, author) {
 }
 
 async function getBooks(){
-    const books = await Book.find();
+    const books = await Book.find().populate('author','name age -_id').select('name description -_id');
     console.log(books);
 }
 
